@@ -18,7 +18,7 @@ import { UsuarioEntity } from './usuario/usuario.entity';
           port: 3306,
           database: 'vehiculos',
           username: 'root',
-          password: 'David2985.',
+          password: 'contraseña',
           synchronize: true,
           dropSchema: true,
           entities: [
