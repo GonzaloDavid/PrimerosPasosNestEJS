@@ -1,9 +1,10 @@
 
 import { UsuarioEntity } from "./usuario.entity";
 
-import { FindManyOptions, Repository } from "typeorm";
+import { FindManyOptions, Repository, FindOneOptions } from "typeorm";
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from "@nestjs/common";
+import { UsuarioDto } from "./usuario.dto";
 
 @Injectable()
 export class UsuarioService {
@@ -19,7 +20,7 @@ export class UsuarioService {
         return this._usuarioRepository.find(parametrosBusqueda);
     }
 
-    crear(usurio: UsuarioEntity): Promise<UsuarioEntity> {
+    crear(usurio: UsuarioDto): Promise<UsuarioEntity> {
 
         // Metodo Create es como un CONSTRUCTOR de la ENTIDAD
         const usuarioEntity: UsuarioEntity = this._usuarioRepository
@@ -53,5 +54,20 @@ export class UsuarioService {
         return this._usuarioRepository.findOne(usurioid);
     }
 
+    async autenticar(correo: string, password: string): Promise<UsuarioEntity> {
+        // Password encriptada
+        // Encriptar el passwrod que les llega
 
+        const consulta: FindOneOptions<UsuarioEntity> = {
+            where: {
+                correo: correo,
+                password: password // password encriptado
+            }
+        };
+
+        const respuesta = await this._usuarioRepository.findOne(consulta);
+
+      return respuesta;
+
+    }
 }

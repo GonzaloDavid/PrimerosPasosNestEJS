@@ -2,7 +2,9 @@ import {IsNotEmpty, IsEmail, Matches, IsString, IsNumberString, IsNumber, IsEnum
 
 export class UsuarioDto {
     
-    
+    // @IsNumber()
+    usuario_id: number;
+
     @IsNotEmpty()
     @IsString()
     @Matches(/^[A-Za-z\s]+$/)
@@ -18,9 +20,8 @@ export class UsuarioDto {
 
 
     @IsNotEmpty()
-    @IsString()
-    @Matches(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)
-    fecha_nacimiento: string;
+    // @Matches(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)
+    fecha_nacimiento: Date;
 
     
 }

@@ -9,10 +9,27 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-  @Get('register')
-  mostrarLogin(
-      @Res() res
-  ) {
-      res.render('register');
+
+  @Get('inicio')
+  LlamarVistaInicio( 
+    @Res() res
+    )
+  {
+    res.render('inicio');
   }
+  @Get('login')
+  LlamarVistaLogin( 
+    @Res() res
+    )
+  {
+    res.render('login');
+  }
+  @Get('register')
+  LlamarVistaRegistro( 
+    @Res() res
+    )
+  {
+    res.render('register');
+  }
+
 }
